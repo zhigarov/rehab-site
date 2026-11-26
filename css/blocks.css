@@ -624,3 +624,20 @@
   /* на компьютере круглая кнопка WhatsApp не нужна — в шапке и так есть кнопки */
   .fab { display: none; }
 }
+
+/* =========================================================
+   Правки 26.11.2026 — новое главное фото
+   ========================================================= */
+/* светлое сияние за головой и плечами: кожа больше не сливается с персиковым фоном */
+.hero__visual::before {
+  content: ""; position: absolute; left: 54%; top: -2%; width: 115%; height: 78%;
+  transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 253, 250, .95) 0%, rgba(255, 252, 247, .6) 42%, rgba(255, 252, 247, 0) 72%);
+}
+/* тень фото обрезалась левым краем картинки и давала тонкую вертикальную линию — растушёвываем и левый край */
+.hero__figure {
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 20%), linear-gradient(to left, transparent 0%, #000 9%), linear-gradient(to right, transparent 0%, #000 8%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to top, transparent 0%, #000 20%), linear-gradient(to left, transparent 0%, #000 9%), linear-gradient(to right, transparent 0%, #000 8%);
+  mask-composite: intersect;
+}
